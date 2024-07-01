@@ -10,6 +10,14 @@
 	<groupId>com.seeing</groupId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<artifactId>pigeon-post-service-impl</artifactId>
+	<artifactId>pigeon-post-service-api</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.seeing</groupId>
+			<artifactId>pigeon-post-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 
 </project>

@@ -10,6 +10,6 @@
 	<groupId>com.seeing</groupId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<artifactId>pigeon-post-service</artifactId>
+	<artifactId>pigeon-post-service-api-impl</artifactId>
 
 </project>

@@ -10,10 +10,10 @@
 
     <modules>
         <module>pigeon-post-common</module>
-        <module>pigeon-post-service</module>
+        <module>pigeon-post-service-api</module>
         <module>pigeon-post-cron</module>
         <module>pigeon-post-handler</module>
-        <module>pigeon-post-service-impl</module>
+        <module>pigeon-post-service-api-impl</module>
         <module>pigeon-post-stream</module>
         <module>pigeon-post-support</module>
         <module>pigeon-post-web</module>
@@ -34,6 +34,7 @@
         <hutool-all.version>5.7.15</hutool-all.version>
         <guava.version>31.0.1-jre</guava.version>
         <fastjson.version>1.2.83</fastjson.version>
+        <rocketmq.version>2.2.2</rocketmq.version>
     </properties>
 
     <dependencyManagement>
@@ -62,6 +63,13 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq.version}</version>
+
             </dependency>
         </dependencies>
     </dependencyManagement>
