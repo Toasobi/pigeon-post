@@ -12,4 +12,12 @@
 
     <artifactId>pigeon-post-handler</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.seeing</groupId>
+            <artifactId>pigeon-post-support</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>
