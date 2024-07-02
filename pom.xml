@@ -19,66 +19,50 @@
         <module>pigeon-post-web</module>
     </modules>
 
-    <properties>
-        <!--项目版本-->
-        <revision>0.0.1-SNAPSHOT</revision>
-
-        <!--构建配置-->
-        <java.version>1.8</java.version>
-        <target.java.version>1.8</target.java.version>
-        <maven.compiler.source>${target.java.version}</maven.compiler.source>
-        <maven.compiler.target>${target.java.version}</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!--依赖库版本-->
-        <hutool-all.version>5.7.15</hutool-all.version>
-        <guava.version>31.0.1-jre</guava.version>
-        <fastjson.version>1.2.83</fastjson.version>
-        <rocketmq.version>2.2.2</rocketmq.version>
-    </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-            </dependency>
-
-            <!--hutool工具包-->
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool-all.version}</version>
-            </dependency>
-
-            <!--guava工具包-->
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-
-            <!--fastjson包-->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-spring-boot-starter</artifactId>
-                <version>${rocketmq.version}</version>
-
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.6</version>
         <relativePath/>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--hutool工具包-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.7.15</version>
+            </dependency>
+
+            <!--guava工具包-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>31.0.1-jre</version>
+            </dependency>
+
+            <!--fastjson包-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.83</version>
+            </dependency>
+
+            <!--腾讯sdk(目前用在短信上)-->
+            <dependency>
+                <groupId>com.tencentcloudapi</groupId>
+                <artifactId>tencentcloud-sdk-java</artifactId>
+                <version>3.1.510</version>
+            </dependency>
+
+            <!--mysql驱动包-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.35</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
