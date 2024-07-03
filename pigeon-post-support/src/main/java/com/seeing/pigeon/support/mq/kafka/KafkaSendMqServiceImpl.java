@@ -20,13 +20,13 @@ import java.util.List;
 
 @Slf4j
 @Service
-@ConditionalOnProperty(name = "austin.mq.pipeline", havingValue = MessageQueuePipeline.KAFKA)
+@ConditionalOnProperty(name = "pigeon.mq.pipeline", havingValue = MessageQueuePipeline.KAFKA)
 public class KafkaSendMqServiceImpl implements SendMqService {
 
     @Autowired
     private KafkaTemplate kafkaTemplate;
 
-    @Value("${austin.business.tagId.key}")
+    @Value("${pigeon.business.tagId.key}")
     private String tagIdKey;
 
     @Override
