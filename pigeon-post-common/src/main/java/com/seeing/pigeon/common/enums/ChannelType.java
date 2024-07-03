@@ -16,17 +16,17 @@ import lombok.ToString;
 public enum ChannelType {
 
 
-    IM(10, "IM(站内信)", ImContentModel.class, "im"),
-    PUSH(20, "push(通知栏)", PushContentModel.class, "push"),
-    SMS(30, "sms(短信)", SmsContentModel.class, "sms"),
-    EMAIL(40, "email(邮件)", EmailContentModel.class, "email"),
-    OFFICIAL_ACCOUNT(50, "officialAccounts(服务号)", OfficialAccountsContentModel.class, "official_accounts"),
-    MINI_PROGRAM(60, "miniProgram(小程序)", MiniProgramContentModel.class, "mini_program"),
-    ENTERPRISE_WE_CHAT(70, "enterpriseWeChat(企业微信)", EnterpriseWeChatContentModel.class, "enterprise_we_chat"),
-    DING_DING_ROBOT(80, "dingDingRobot(钉钉机器人)", DingDingRobotContentModel.class, "ding_ding_robot"),
-    DING_DING_WORK_NOTICE(90, "dingDingWorkNotice(钉钉工作通知)", DingDingWorkContentModel.class, "ding_ding_work_notice"),
-    ENTERPRISE_WE_CHAT_ROBOT(100, "enterpriseWeChat(企业微信机器人)", EnterpriseWeChatRobotContentModel.class, "enterprise_we_chat_robot"),
-    FEI_SHU_ROBOT(110, "feiShuRoot(飞书机器人)", FeiShuRobotContentModel.class, "fei_shu_robot"),
+    IM(10, "IM(站内信)", ImContentModel.class, "pigeon_im"),
+    PUSH(20, "push(通知栏)", PushContentModel.class, "pigeon_push"),
+    SMS(30, "sms(短信)", SmsContentModel.class, "pigeon_sms"),
+    EMAIL(40, "email(邮件)", EmailContentModel.class, "pigeon_email"),
+    OFFICIAL_ACCOUNT(50, "officialAccounts(服务号)", OfficialAccountsContentModel.class, "pigeon_official_accounts"),
+    MINI_PROGRAM(60, "miniProgram(小程序)", MiniProgramContentModel.class, "pigeon_mini_program"),
+    ENTERPRISE_WE_CHAT(70, "enterpriseWeChat(企业微信)", EnterpriseWeChatContentModel.class, "pigeon_enterprise_we_chat"),
+    DING_DING_ROBOT(80, "dingDingRobot(钉钉机器人)", DingDingRobotContentModel.class, "pigeon_ding_ding_robot"),
+    DING_DING_WORK_NOTICE(90, "dingDingWorkNotice(钉钉工作通知)", DingDingWorkContentModel.class, "pigeon_ding_ding_work_notice"),
+    ENTERPRISE_WE_CHAT_ROBOT(100, "enterpriseWeChat(企业微信机器人)", EnterpriseWeChatRobotContentModel.class, "pigeon_enterprise_we_chat_robot"),
+    FEI_SHU_ROBOT(110, "feiShuRoot(飞书机器人)", FeiShuRobotContentModel.class, "pigeon_fei_shu_robot"),
     ;
 
     /**
