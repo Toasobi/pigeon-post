@@ -11,7 +11,7 @@ import java.util.Map;
  * @author zengxw
  * 内容占位符 替换
  * <p>
- * austin占位符格式{$var}
+ * pigeon占位符格式{$var}
  */
 public class ContentHolderUtil {
 

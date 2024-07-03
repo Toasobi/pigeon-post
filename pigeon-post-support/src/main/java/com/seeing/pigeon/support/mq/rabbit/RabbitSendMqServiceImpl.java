@@ -12,16 +12,16 @@ import com.seeing.pigeon.support.mq.SendMqService;
 
 @Slf4j
 @Service
-@ConditionalOnProperty(name = "austin.mq.pipeline", havingValue = MessageQueuePipeline.RABBIT_MQ)
+@ConditionalOnProperty(name = "pigeon.mq.pipeline", havingValue = MessageQueuePipeline.RABBIT_MQ)
 public class RabbitSendMqServiceImpl implements SendMqService {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Value("${austin.rabbitmq.topic.name}")
+    @Value("${pigeon.rabbitmq.topic.name}")
     private String confTopic;
 
-    @Value("${austin.rabbitmq.exchange.name}")
+    @Value("${pigeon.rabbitmq.exchange.name}")
     private String exchangeName;
 
 

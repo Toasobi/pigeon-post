@@ -33,7 +33,7 @@ public class SendMqAction implements BusinessProcess<SendTaskModel> {
     private String sendMessageTopic;
 
     @Value("${pigeon.business.recall.topic.name}")
-    private String austinRecall;
+    private String pigeonRecall;
     @Value("${pigeon.business.tagId.value}")
     private String tagId;
 
@@ -50,7 +50,7 @@ public class SendMqAction implements BusinessProcess<SendTaskModel> {
                 sendMqService.send(sendMessageTopic, message, tagId);
             } else if (BusinessCode.RECALL.getCode().equals(context.getCode())) {
                 String message = JSON.toJSONString(sendTaskModel.getMessageTemplate(), new SerializerFeature[]{SerializerFeature.WriteClassName});
-                sendMqService.send(austinRecall, message, tagId);
+                sendMqService.send(pigeonRecall, message, tagId);
             }
         } catch (Exception e) {
             context.setNeedBreak(true).setResponse(BasicResultVO.fail(RespStatusEnum.SERVICE_ERROR));
