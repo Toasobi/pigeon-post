@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RestController;
 import com.seeing.pigeon.support.dao.MessageTemplateDao;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.data.redis.core.StringRedisTemplate;
 
 import java.util.List;
 
@@ -24,6 +25,9 @@ public class TestController {
 
     @Autowired
     private SendService sendService;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @RequestMapping("/test")
     private String test(){
@@ -46,6 +50,11 @@ public class TestController {
 
         SendResponse response = sendService.send(sendRequest);
         return JSON.toJSONString(response);
+    }
 
+    @RequestMapping("/redis")
+    private String testRedis() {
+        stringRedisTemplate.opsForValue().set("pigeon", "post");
+        return stringRedisTemplate.opsForValue().get("pigeon");
     }
 }
