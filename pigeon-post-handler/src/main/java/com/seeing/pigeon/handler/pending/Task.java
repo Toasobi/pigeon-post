@@ -1,9 +1,12 @@
 package com.seeing.pigeon.handler.pending;
 
 
+import cn.hutool.core.collection.CollUtil;
+import com.seeing.pigeon.handler.deduplication.DeduplicationRuleService;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -16,7 +19,7 @@ import com.seeing.pigeon.common.domain.TaskInfo;
  * 2.通用去重功能
  * 3.发送消息
  *
- * @author 3y
+ * @author zengxw
  */
 @Data
 @Accessors(chain = true)
@@ -24,6 +27,9 @@ import com.seeing.pigeon.common.domain.TaskInfo;
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Task implements Runnable {
+
+    @Autowired
+    private DeduplicationRuleService deduplicationRuleService;
 
     private TaskInfo taskInfo;
 
@@ -40,9 +46,9 @@ public class Task implements Runnable {
 //        shieldService.shield(taskInfo);
 //
 //        // 2.平台通用去重
-//        if (CollUtil.isNotEmpty(taskInfo.getReceiver())) {
-//            deduplicationRuleService.duplication(taskInfo);
-//        }
+        if (CollUtil.isNotEmpty(taskInfo.getReceiver())) {
+            deduplicationRuleService.duplication(taskInfo);
+        }
 //
 //        // 3. 真正发送消息
 //        if (CollUtil.isNotEmpty(taskInfo.getReceiver())) {
