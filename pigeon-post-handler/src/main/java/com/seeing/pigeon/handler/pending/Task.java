@@ -3,6 +3,7 @@ package com.seeing.pigeon.handler.pending;
 
 import cn.hutool.core.collection.CollUtil;
 import com.seeing.pigeon.handler.deduplication.DeduplicationRuleService;
+import com.seeing.pigeon.handler.handler.HandlerHolder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,9 @@ public class Task implements Runnable {
     @Autowired
     private DeduplicationRuleService deduplicationRuleService;
 
+    @Autowired
+    private HandlerHolder handlerHolder;
+
     private TaskInfo taskInfo;
 
     @Override
@@ -49,11 +53,11 @@ public class Task implements Runnable {
         if (CollUtil.isNotEmpty(taskInfo.getReceiver())) {
             deduplicationRuleService.duplication(taskInfo);
         }
-//
-//        // 3. 真正发送消息
-//        if (CollUtil.isNotEmpty(taskInfo.getReceiver())) {
-//            handlerHolder.route(taskInfo.getSendChannel()).doHandler(taskInfo);
-//        }
+
+        // 3. 真正发送消息
+        if (CollUtil.isNotEmpty(taskInfo.getReceiver())) {
+            handlerHolder.route(taskInfo.getSendChannel()).doHandler(taskInfo);
+        }
 
     }
 }
