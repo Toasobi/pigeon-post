@@ -11,7 +11,7 @@ import com.seeing.pigeon.support.pipeline.ProcessContext;
 import com.seeing.pigeon.support.pipeline.ProcessController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import cn.monitor4all.logRecord.annotation.OperationLog;
 
 
 import java.util.Collections;
@@ -28,6 +28,7 @@ public class SendServiceImpl implements SendService {
     private ProcessController processController;
 
     @Override
+    @OperationLog(bizType = "SendService#send", bizId = "#sendRequest.messageTemplateId", msg = "#sendRequest")
     public SendResponse send(SendRequest sendRequest) {
 
         SendTaskModel sendTaskModel = SendTaskModel.builder()
