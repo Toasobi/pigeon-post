@@ -1,10 +1,12 @@
 package com.seeing.pigeon.handler.deduplication.service;
 
 import cn.hutool.core.collection.CollUtil;
+import com.seeing.pigeon.common.domain.AnchorInfo;
 import com.seeing.pigeon.common.domain.TaskInfo;
 import com.seeing.pigeon.handler.deduplication.DeduplicationHolder;
 import com.seeing.pigeon.handler.deduplication.DeduplicationParam;
 import com.seeing.pigeon.handler.deduplication.limit.LimitService;
+import com.seeing.pigeon.support.utils.LogUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,8 +32,8 @@ public abstract class AbstractDeduplicationService implements DeduplicationServi
         deduplicationHolder.putService(deduplicationType, this); //子类构造函数已经将deduplicationType赋予了值, 有多少个子类执行多少次。这个this其实实际为该抽象类和子类的合体
     }
 
-//    @Autowired
-//    private LogUtils logUtils;
+    @Autowired
+    private LogUtils logUtils;
 
 
     @Override
@@ -43,7 +45,7 @@ public abstract class AbstractDeduplicationService implements DeduplicationServi
         // 剔除符合去重条件的用户
         if (CollUtil.isNotEmpty(filterReceiver)) {
             taskInfo.getReceiver().removeAll(filterReceiver);
-            //logUtils.print(AnchorInfo.builder().businessId(taskInfo.getBusinessId()).ids(filterReceiver).state(param.getAnchorState().getCode()).build());
+            logUtils.print(AnchorInfo.builder().businessId(taskInfo.getBusinessId()).ids(filterReceiver).state(param.getAnchorState().getCode()).build());
         }
     }
 
