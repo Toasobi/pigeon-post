@@ -47,6 +47,12 @@
 			<artifactId>pigeon-post-service-api-impl</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.seeing</groupId>
+			<artifactId>pigeon-post-cron</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
