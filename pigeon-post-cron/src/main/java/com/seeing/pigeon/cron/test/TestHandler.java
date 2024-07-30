@@ -11,7 +11,7 @@ public class TestHandler {
     /**
      * 处理后台的定时任务消息
      */
-    @XxlJob("pigeonJob")
+    @XxlJob("pigeonTestJob")
     public void execute() {
         log.info("CronTaskHandler#execute messageTemplateId:{} cron exec!", XxlJobHelper.getJobParam());
     }
