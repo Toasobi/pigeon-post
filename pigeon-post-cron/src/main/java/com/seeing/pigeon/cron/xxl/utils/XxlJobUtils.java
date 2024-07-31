@@ -53,7 +53,7 @@ public class XxlJobUtils {
                 .misfireStrategy(MisfireStrategyEnum.DO_NOTHING.name()) //调度过期策略
                 .executorRouteStrategy(ExecutorRouteStrategyEnum.CONSISTENT_HASH.name()) //指定任务在多台执行器之间的分配策略
                 .executorHandler(XxlJobConstant.JOB_HANDLER_NAME) //指定具体执行任务的逻辑处理器
-                .executorParam(String.valueOf(messageTemplate.getId()))
+                .executorParam(String.valueOf(messageTemplate.getId())) //存放了消息模板id
                 .executorBlockStrategy(ExecutorBlockStrategyEnum.SERIAL_EXECUTION.name()) //阻塞策略
                 .executorTimeout(XxlJobConstant.TIME_OUT)
                 .executorFailRetryCount(XxlJobConstant.RETRY_COUNT)
