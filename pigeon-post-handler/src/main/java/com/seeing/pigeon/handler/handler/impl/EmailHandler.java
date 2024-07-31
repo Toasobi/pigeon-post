@@ -10,9 +10,11 @@ import com.seeing.pigeon.common.dto.model.EmailContentModel;
 import com.seeing.pigeon.common.enums.ChannelType;
 import com.seeing.pigeon.handler.handler.Handler;
 import com.seeing.pigeon.support.domain.MessageTemplate;
+import com.seeing.pigeon.support.utils.AccountUtils;
 import com.seeing.pigeon.support.utils.PigeonPostFileUtils;
 import com.sun.mail.util.MailSSLSocketFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import com.seeing.pigeon.handler.handler.BaseHandler;
@@ -28,6 +30,9 @@ public class EmailHandler extends BaseHandler implements Handler {
 
     @Value("${pigeon.business.upload.crowd.path}")
     private String dataPath;
+
+    @Autowired
+    private AccountUtils accountUtils;
 
     public EmailHandler() {
         channelCode = ChannelType.EMAIL.getCode();
@@ -58,13 +63,7 @@ public class EmailHandler extends BaseHandler implements Handler {
      * @return
      */
     private MailAccount getAccountConfig(Integer sendAccount) {
-        //MailAccount account = accountUtils.getAccountById(sendAccount, MailAccount.class);
-
-        /**
-         * 修改 user/from/pass
-         */
-        String defaultConfig = "{\"host\":\"smtp.qq.com\",\"port\":465,\"user\":\"2683661364@qq.com\",\"pass\":\"cimpcexyoiynebha\",\"from\":\"2683661364@qq.com\",\"starttlsEnable\":\"true\",\"auth\":true,\"sslEnable\":true}";
-        MailAccount account = JSON.parseObject(defaultConfig, MailAccount.class);
+        MailAccount account = accountUtils.getAccountById(sendAccount, MailAccount.class);
         try {
             //SSL配置
             MailSSLSocketFactory sf = new MailSSLSocketFactory();

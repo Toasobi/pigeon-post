@@ -26,6 +26,15 @@
         <relativePath/>
     </parent>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <target.java.version>1.8</target.java.version>
+        <maven.compiler.source>${target.java.version}</maven.compiler.source>
+        <maven.compiler.target>${target.java.version}</maven.compiler.target>
+        <weixin-java>4.5.4.B</weixin-java>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <!--hutool工具包-->
