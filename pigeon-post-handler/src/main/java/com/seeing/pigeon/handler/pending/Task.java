@@ -4,6 +4,7 @@ package com.seeing.pigeon.handler.pending;
 import cn.hutool.core.collection.CollUtil;
 import com.seeing.pigeon.handler.deduplication.DeduplicationRuleService;
 import com.seeing.pigeon.handler.handler.HandlerHolder;
+import com.seeing.pigeon.handler.shield.ShieldService;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,9 @@ public class Task implements Runnable {
     @Autowired
     private HandlerHolder handlerHolder;
 
+    @Autowired
+    private ShieldService shieldService;
+
     private TaskInfo taskInfo;
 
     @Override
@@ -46,8 +50,8 @@ public class Task implements Runnable {
 //        if (discardMessageService.isDiscard(taskInfo)) {
 //            return;
 //        }
-//        // 1. 屏蔽消息
-//        shieldService.shield(taskInfo);
+        // 1. 屏蔽消息
+        shieldService.shield(taskInfo);
 //
 //        // 2.平台通用去重
         if (CollUtil.isNotEmpty(taskInfo.getReceiver())) {
