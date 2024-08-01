@@ -5,9 +5,12 @@ import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Throwables;
+import com.google.common.util.concurrent.RateLimiter;
 import com.seeing.pigeon.common.domain.TaskInfo;
 import com.seeing.pigeon.common.dto.model.EmailContentModel;
 import com.seeing.pigeon.common.enums.ChannelType;
+import com.seeing.pigeon.handler.enums.RateLimitStrategy;
+import com.seeing.pigeon.handler.flowcontrol.FlowControlParam;
 import com.seeing.pigeon.handler.handler.Handler;
 import com.seeing.pigeon.support.domain.MessageTemplate;
 import com.seeing.pigeon.support.utils.AccountUtils;
@@ -36,6 +39,12 @@ public class EmailHandler extends BaseHandler implements Handler {
 
     public EmailHandler() {
         channelCode = ChannelType.EMAIL.getCode();
+
+        // 按照请求限流，默认单机 3 qps （具体数值配置在apollo动态调整)
+        Double rateInitValue = Double.valueOf(3);
+        flowControlParam = FlowControlParam.builder().rateInitValue(rateInitValue)
+                .rateLimitStrategy(RateLimitStrategy.REQUEST_RATE_LIMIT)
+                .rateLimiter(RateLimiter.create(rateInitValue)).build();
     }
 
     @Override
