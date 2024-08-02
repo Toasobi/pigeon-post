@@ -29,6 +29,12 @@
             <artifactId>weixin-java-cp</artifactId>
             <version>4.5.4.B</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.tencentcloudapi</groupId>
+            <artifactId>tencentcloud-sdk-java</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
