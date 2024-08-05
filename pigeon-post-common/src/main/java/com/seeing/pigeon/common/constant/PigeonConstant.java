@@ -62,4 +62,10 @@ public class PigeonConstant {
     public static final String REQUEST_METHOD_GET = "GET";
     public static final String REQUEST_METHOD_POST = "POST";
 
+    /**
+     * 链路追踪缓存的key标识
+     */
+    public static final String CACHE_KEY_PREFIX = "Pigeon";
+    public static final String MESSAGE_ID = "MessageId";
+
 }

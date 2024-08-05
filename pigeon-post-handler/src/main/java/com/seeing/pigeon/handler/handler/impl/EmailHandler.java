@@ -73,6 +73,8 @@ public class EmailHandler extends BaseHandler implements Handler {
      */
     private MailAccount getAccountConfig(Integer sendAccount) {
         MailAccount account = accountUtils.getAccountById(sendAccount, MailAccount.class);
+//        String defaultConfig = "{\"host\":\"smtp.qq.com\",\"port\":465,\"user\":\"2683661364@qq.com\",\"pass\":\"cimpcexyoiynebha\",\"from\":\"2683661364@qq.com\",\"starttlsEnable\":\"true\",\"auth\":true,\"sslEnable\":true}";
+//        MailAccount account = JSON.parseObject(defaultConfig, MailAccount.class);
         try {
             //SSL配置
             MailSSLSocketFactory sf = new MailSSLSocketFactory();
