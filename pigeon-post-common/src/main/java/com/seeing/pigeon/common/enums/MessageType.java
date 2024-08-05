@@ -42,6 +42,21 @@ public enum MessageType implements PowerfulEnum {
      */
     private final String codeEn;
 
+    /**
+     * 通过code获取enum
+     * @param code
+     * @return
+     */
+    public static MessageType getEnumByCode(Integer code) {
+        MessageType[] values = values();
+        for (MessageType value : values) {
+            if (value.getCode().equals(code)) {
+                return value;
+            }
+        }
+        return null;
+    }
+
 
 }
 
